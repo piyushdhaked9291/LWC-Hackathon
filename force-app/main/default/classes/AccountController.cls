@@ -15,5 +15,12 @@ public with sharing class AccountController {
     ];
     return accList;
   }
+
+  @AuraEnabled(cacheable=true)
+  public static List<Contact> getContactDataToExport() {
+    List<Contact> conList =[ SELECT Id, FirstName, LastName, Email , Phone ,Title FROM contact];
+    return conList;
+  }
+  
 }
 
